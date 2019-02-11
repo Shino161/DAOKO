@@ -1,0 +1,42 @@
+{
+  "name": "daoko",
+  "version": "1.0.0",
+  "description": "一个轻量化的前端模版",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --inline --config build/webpack.dev.js",
+    "build": "webpack --config build/webpack.prod.js"
+  },
+  "author": "shino161@outlook.com",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.4.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.0.1"
+  }
+}
