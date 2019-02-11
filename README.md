@@ -10,10 +10,6 @@ A:造轮子是人类的本质~~复读~~
 Q:这个轮子有什么优点？  
 A:这个轮子没有什么优点，仅仅赶时髦用了webpakc4且没有集成很多代码~~自己动手写~~
 
-## 下载
-```bush
-git clone http://gitlab.asoco.com.cn/chenziqi/DAOKO.git
-```
 ## 安装运行
 ```bush
 npm i
