@@ -8,7 +8,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-
+  next()
 })
 
 router.afterEach(to => {

@@ -2,8 +2,9 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
 
+
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
   output: { 
     filename: 'js/[name].[hash].js', 
     path: path.resolve(__dirname, '../dist')
@@ -11,6 +12,7 @@ module.exports = merge(common, {
   module: {},
   mode: 'development',
   devServer: {
+    noInfo: true,
     open: true,
     // 如果你想要代理多个路径特定到同一个 target 下，你可以使用由一个或多个「具有 context 属性的对象」构成的数组
     // proxy: [{

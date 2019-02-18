@@ -1,4 +1,3 @@
-
 export default [{
     path: '/',
     name: 'Home',
@@ -6,5 +5,5 @@ export default [{
       title: '首页',
     },
     component: () => import('@/view/home.vue')
-    },
+  },
 ]

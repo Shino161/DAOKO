@@ -11,6 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = merge(common, {
+	devtool: 'cheap-module-source-map',
     optimization: {
         // 分离chunks
         splitChunks: {
@@ -59,13 +60,6 @@ module.exports = merge(common, {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            limit: 5000,
-                            name: 'imgs/[hash].[ext]',
-                        },
-                    },
                     // 图片压缩
                     {
                         loader: 'image-webpack-loader',
@@ -100,7 +94,8 @@ module.exports = merge(common, {
             chunkFilename: 'css/[id].[hash].css',
         }),
     ],
-    mode: 'production',
+		mode: 'production',
+		
     output: {
         filename: 'js/[name].[contenthash].js',
         path: path.resolve(__dirname, '../dist'),

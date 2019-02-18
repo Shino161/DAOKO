@@ -1,12 +1,13 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const { resolve } = require('path');
 
 module.exports = {
 	entry: './src/index.js', 
   module: {
+    noParse: /jquery|lodash/,
     rules: [
       {
         test: /\.vue$/,
@@ -29,15 +30,10 @@ module.exports = {
 					'less-loader'
 				]
 			},
-			{
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {},
-          },
-        ],
-      }	
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
+        loader: "url-loader?limit=10240&name=assets/img/[name]_[hash].[ext]",
+      }
 		],
 		
   },
