@@ -1,17 +1,15 @@
 import axios from '@/libs/api.request'
-
+const apiPreFix = 'xxxx'
 export const get = (params) => {
   return axios.request({
-    url: '/user/info',
+    url: `${apiPreFix}/xxxx/`,
     params,
     method: 'get'
   })
 }
-
-// PC登录
 export const post = (data) => {
   return axios.request({
-    url: '/user/info',
+    url: `${apiPreFix}/xxxx/`,
     data,
     method: 'post'
   })

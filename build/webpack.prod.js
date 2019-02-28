@@ -6,12 +6,13 @@ const common = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // 压缩CSS插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 // 压缩CSS和JS代码
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// 拷贝静态资源
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = merge(common, {
-	devtool: 'cheap-module-source-map',
+    devtool: 'cheap-module-source-map',
     optimization: {
         // 分离chunks
         splitChunks: {
@@ -34,7 +35,6 @@ module.exports = merge(common, {
                         drop_console: true,
                     },
                 },
-               
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],
@@ -42,7 +42,7 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: /\.(less|c)ss$/,
+                test: /\.(c|le)ss$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -55,6 +55,7 @@ module.exports = merge(common, {
                     'css-loader',
                     'postcss-loader',
                     'less-loader',
+
                 ],
             },
             {
@@ -93,11 +94,18 @@ module.exports = merge(common, {
             filename: 'css/[name].[hash].css',
             chunkFilename: 'css/[id].[hash].css',
         }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../public'),
+                to: path.resolve(__dirname, '../dist/public'),
+                ignore: ['index.html']
+            }
+        ]),
     ],
-		mode: 'production',
-		
+    mode: 'production',
     output: {
         filename: 'js/[name].[contenthash].js',
         path: path.resolve(__dirname, '../dist'),
+        publicPath: '/'
     },
 });

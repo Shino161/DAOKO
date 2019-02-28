@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style>
 html,body{
   width: 100%;
   height: 100%;

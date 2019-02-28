@@ -7,11 +7,33 @@ module.exports = merge(common, {
   devtool: 'cheap-module-eval-source-map',
   output: { 
     filename: 'js/[name].[hash].js', 
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
   },
-  module: {},
+  module: {
+    rules:[
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      }
+    ]
+  },
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
+    clientLogLevel: 'warning',
+    stats: 'errors-only',
     noInfo: true,
     open: true,
     // 如果你想要代理多个路径特定到同一个 target 下，你可以使用由一个或多个「具有 context 属性的对象」构成的数组

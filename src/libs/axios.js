@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { Message } from 'iview'
+import config from '@/config'
 
 class HttpRequest {
   constructor (baseUrl = baseURL) {
@@ -25,9 +26,9 @@ class HttpRequest {
     // 请求拦截
     instance.interceptors.request.use(config => {
       // 添加全局的loading...
-      if (!Object.keys(this.queue).length) {
-        // Spin.show() // 不建议开启，因为界面不友好
-      }
+      // if (!Object.keys(this.queue).length) {
+      //   Spin.show() // 不建议开启，因为界面不友好
+      // }
       this.queue[url] = true
       return config
     }, error => {
@@ -37,19 +38,15 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data, status } = res
-      // http返回码都为200，因此封装请求的返回值
-      if (res.data && data.code === 1000) {
+      // console.log(res);
+      if (status == 200 && data && config.apiSucessCode.includes(data.code)) {
         return data
-      }else if (res.data && data.code === 9999){
-        // 后台框架默认fail，过滤掉默认的返回消息
-        if (data.msg != 'fail') {
-          Message.error(data.msg)
-        }
+      }else if (data && data.msg){
+        Message.error(data.msg)
         return Promise.reject(data.msg)
       }
     }, error => {
       this.destroy(url)
-      // addErrorLog(error.response)
       return Promise.reject(error)
     })
   }
