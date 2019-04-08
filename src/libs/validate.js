@@ -1,9 +1,5 @@
 /**
  * @description 验证手机号规则
- * 使用前须知
- * 先参考 [async-validator](https://github.com/yiminghe/async-validator)
- * 已封装大部分验证规则 包括 number url email min max len
- * 如无法实现再写自定义验证
  */
 export const validatePhone = (rule, value, callback) => {
   if (value && !/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/.test(value)) {

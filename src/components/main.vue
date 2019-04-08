@@ -1,6 +1,6 @@
 <style scoped lang="less">
 .layout {
-  border: 1px solid #d7dde4;
+  // border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
   overflow: hidden;
@@ -9,18 +9,17 @@
   height: 36px;
 }
 .layout-content {
-  height: calc(~'100vh - 67px');
   overflow: auto;
   &-breadcrumb {
-    padding: 10px;    
+    padding: 10px;
   }
   &-view {
+    overflow: auto;
     padding: 20px;
     background-color: #fff;
-    height: 100%;
+    height: calc(~"100vh - 108px");
   }
 }
-
 .logo-con {
   display: flex;
   color: #fff;
@@ -38,6 +37,9 @@
     font-family: "PingFangSC-Regular", sans-serif;
   }
 }
+.header-avatar {
+  float: right;
+}
 </style>
 <template>
   <div class="layout">
@@ -45,7 +47,7 @@
       <div class="logo-con">
         <span>碧蓝幻想骑空士管理系统</span>
       </div>
-      <Menu theme="dark" width="auto" accordion :open-names="['logistics']" :active-name="$route.name">
+      <Menu theme="dark" width="auto" accordion :open-names="openName" :active-name="$route.name">
         <Submenu :name="s.name" v-for="(s, index) in $router.options.routes" :key="index">
           <template slot="title">
             <Icon :type="s.meta.icon"></Icon>
@@ -62,8 +64,20 @@
       </Menu>
     </Sider>
     <Layout :style="{marginLeft: '200px'}">
-      <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}"></Header>
-      <Content  class="layout-content">
+      <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
+        <div class="header-avatar">
+          <Avatar icon="ios-person"/>
+          <Dropdown trigger="click" style="margin-left: 20px" @on-click="handleDropDown">
+            <a href="javascript:void(0)">
+              <Icon type="ios-arrow-down"></Icon>
+            </a>
+            <DropdownMenu slot="list">
+              <DropdownItem name="logout">退出登录</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
+      </Header>
+      <Content class="layout-content">
         <Breadcrumb class="layout-content-breadcrumb">
           <BreadcrumbItem
             :to="item.path"
@@ -84,7 +98,11 @@ export default {
     return {
     };
   },
-  computed: {},
+  computed: {
+    openName() {
+      return [this.$route.matched[0].name]
+    }
+  },
   mounted() {
   }
 };
