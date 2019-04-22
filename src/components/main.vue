@@ -45,7 +45,7 @@
   <div class="layout">
     <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
       <div class="logo-con">
-        <span>碧蓝幻想骑空士管理系统</span>
+        <span>碧蓝幻想</span>
       </div>
       <Menu theme="dark" width="auto" accordion :open-names="openName" :active-name="$route.name">
         <Submenu :name="s.name" v-for="(s, index) in $router.options.routes" :key="index">
