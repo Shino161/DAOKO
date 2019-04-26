@@ -3,12 +3,14 @@
         [
             "@babel/preset-env",
             {
+                "targets": {
+                    "ie": "10"
+                },
                 "useBuiltIns": "entry"
             }
         ]
     ],
     "plugins": [
-        "syntax-dynamic-import",
-        "ramda"
+        "syntax-dynamic-import"
     ]
 }

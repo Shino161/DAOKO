@@ -39,6 +39,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "axios": "^0.18.0",
     "iview": "^3.2.2",
     "ramda": "^0.26.1",
