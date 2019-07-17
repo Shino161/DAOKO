@@ -10,3 +10,11 @@ export const loadFromLocal = (key) => {
     return ''
   }
 }
+
+export const hasRight = (rights, target) => {
+  if (!target || rights.includes(target)) {
+    return true
+  } else {
+    return false
+  }
+}
