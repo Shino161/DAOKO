@@ -53,3 +53,8 @@ npm run build:prod / yarn run prod:dev
     ├── view  页面文件
 ```
 
+## 运行Docker版本
+```bush
+docker build -t daoko:1
+docker run -d --name daoko -p 8099:80 daoko:1
+```
