@@ -4,8 +4,6 @@
 ## 简介 Introduction
 一个使用webpack4的前端脚手架
 
-
-
 ## 答疑环节 Q&A
 
 Q:这个轮子有什么优点？  
