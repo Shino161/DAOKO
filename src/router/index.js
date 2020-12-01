@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routers'
-import iView from 'iview'
+// import iView from 'iview'
 import { hasRight } from '@/libs/util'
 Vue.use(Router)
 
@@ -19,17 +19,17 @@ const toPage = (to, from, next) => {
 }
 
 router.beforeEach((to, from, next) => {
-  iView.LoadingBar.start()
+  // iView.LoadingBar.start()
   next()
 })
 
 router.afterEach(to => {
-  iView.LoadingBar.finish()
+  // iView.LoadingBar.finish()
   window.scrollTo(0, 0)
 })
 
 router.onError(err => {
-  iView.Message.error(err.message)
-  iView.LoadingBar.finish()
+  // iView.Message.error(err.message)
+  // iView.LoadingBar.finish()
 })
 export default router

@@ -1,14 +1,15 @@
 import Vue from 'vue'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 
 import router from './router';
 import store from './store';
 import config from '@/config'
 import filters from '@/libs/filter'
-import iView from 'iview';
-import 'iview/dist/styles/iview.css';
 
-Vue.use(iView);
+
+Vue.use(ElementUI)
 /**
  * @description 生产环境关掉提示
  */
